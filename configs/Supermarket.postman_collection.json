@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ad5b5f03-b44a-4700-abe5-a28bb7e40a04",
+		"_postman_id": "fde00274-b3ea-45a3-be36-f5bd789c6361",
 		"name": "Supermarket",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "41971060"
+		"_exporter_id": "37643426"
 	},
 	"item": [
 		{
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"surname\": \"Pérez\",\r\n    \"username\": \"juanperez\",\r\n    \"email\": \"juan.perez@example.com\",\r\n    \"password\": \"jPerez12@\",\r\n    \"phone\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"surname\": \"Pérez\",\r\n    \"username\": \"juanperez\",\r\n    \"email\": \"juan.perez@example.com\",\r\n    \"password\": \"jPerez12@\",\r\n    \"phone\": \"87654320\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -69,7 +69,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "Token ADMIN"
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWYwNmQ4ZjhmMjZlODk2YmNmMmQiLCJpYXQiOjE3NDExMjMzNDEsImV4cCI6MTc0MTEyNjk0MX0.0yhJAirBxnAckqFffyy18i_2JYUt-SIVW9dKdcL6csA"
 							}
 						},
 						"method": "GET",
@@ -99,7 +99,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "Ingresar token del usuario"
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWYwNmQ4ZjhmMjZlODk2YmNmMmQiLCJpYXQiOjE3NDExMjQ1MzgsImV4cCI6MTc0MTEyODEzOH0.W4xF6TVWy_n-rxBys602NoS6H4nZqtivCsAnz2xKd9U"
 							}
 						},
 						"method": "DELETE",
@@ -162,6 +162,92 @@
 							}
 						},
 						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/user/updateUser/67c69f06d8f8f26e896bcf2d"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/category/getCategorys"
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExMjg0MDIsImV4cCI6MTc0MTEzMjAwMn0.RLfh9blNSYgTn5vyyHuVYkDXrPxGQGinajvjbwD8yCM"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"Frutas\",\r\n    \"description\": \"Alimentas como las manzanas, peras, fresas, etc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/category/AddCategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExMjkwNzQsImV4cCI6MTc0MTEzMjY3NH0.kDdZTDnx0Gbv5XL3DpU3lxyAbgnh1PWmORNZJAW0U0U"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"confirmDelete\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/category/deleteCategory/67c782e0e00173930f61a642"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExMjkwNzQsImV4cCI6MTc0MTEzMjY3NH0.kDdZTDnx0Gbv5XL3DpU3lxyAbgnh1PWmORNZJAW0U0U"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Se incluyen alimentos como las fresas, manzanas, peras, kiwi, etc.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/category/updateCategory/67c785e2124caf6a2a6beee1"
 					},
 					"response": []
 				}

@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "67c782e0e00173930f61a642"
+  },
+  "categoryName": "Electronics",
+  "description": "Devices and gadgets like phones, laptops, and accessories",
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "67c785e2124caf6a2a6beee1"
+  },
+  "categoryName": "Frutas",
+  "description": "Se incluyen alimentos como las fresas, manzanas, peras, kiwi, etc.",
+  "status": true
+}]
