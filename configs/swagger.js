@@ -1,4 +1,3 @@
-import { version } from "mongoose";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express"
 
@@ -6,25 +5,24 @@ const swaggerOptions = {
     swaggerDefinition:{
         openapi: "3.0.0",
         info:{
-            title: "Adoption System API",
+            title: "API Gestion Supermercado",
             version:"1.0.0",
-            description: "API para sistema de adopción de mascotas",
+            description: "API para gestionar un supermercado",
             contact:{
-                name: "Braulio Echeverria",
-                email: "braulioecheveria@kinal.org.gt"
+                name: "Randy Oscal",
+                email: "roscal-2023279@kinal.edu.gt"
             }
         },
         servers:[
             {
-                url: "http://127.0.0.1:3000/adopptionSystem/v1"
+                url: "http://127.0.0.1:3000/gestionSupermarket/v1"
             }
         ]
     },
     apis:[
         "./src/auth/*.js",
-        "./src/user/*.js",
-        "./src/pet/*.js",
-        "./src/appointment/*.js",
+        "./src/user/*.js"
+
     ]
 }
 

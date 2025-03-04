@@ -1,22 +1,22 @@
-"use strict"
+'use strict'
 
 import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
-import authRoutes from "../src/auth/auth.routes.js"
-import userRoutes from "../src/user/user.routes.js"
-import petRoutes from "../src/pet/pet.routes.js"
-import appointmentRoutes from "../src/appointment/appointment.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
+import authRoutes from "../src/auth/auth.routes.js"
+import AddUserAdmin from "../src/auth/auth.controller.js"
+import userRoutes from "../src/user/user.routes.js"
 import { swaggerDocs, swaggerUi } from "./swagger.js"
+
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
     app.use(cors({
-        origin: '*', // Permitir todas las solicitudes de origen
+        origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization']
     }));
@@ -31,22 +31,20 @@ const middlewares = (app) => {
             },
         },
     }));
-    app.use(morgan("dev"))
-    app.use(apiLimiter)
-}
+        app.use(morgan("dev"))
+        app.use(apiLimiter)
+    }
 
-const routes = (app) =>{
-    app.use("/adoptionSystem/v1/auth", authRoutes)
-    app.use("/adoptionSystem/v1/user", userRoutes)
-    app.use("/adoptionSystem/v1/pet", petRoutes)
-    app.use("/adoptionSystem/v1/appointment", appointmentRoutes)
-    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
-}
+    const routes = (app) => {
+        app.use("/gestionSupermarket/v1/auth", authRoutes)
+        app.use("/gestionSupermarket/v1/user", userRoutes)
+        app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+    }
 
-const conectarDB = async () =>{
-    try{
+const conectarDB = async () => {
+    try {
         await dbConnection()
-    }catch(err){
+    } catch (err) {
         console.log(`Database connection failed: ${err}`)
         process.exit(1)
     }
@@ -54,13 +52,14 @@ const conectarDB = async () =>{
 
 export const initServer = () => {
     const app = express()
-    try{
+    try {
         middlewares(app)
         conectarDB()
         routes(app)
+        AddUserAdmin()
         app.listen(process.env.PORT)
         console.log(`Server running on port ${process.env.PORT}`)
-    }catch(err){
+    } catch (err) {
         console.log(`Server init failed: ${err}`)
     }
 }

@@ -5,10 +5,8 @@ import { generateJWT } from "../helpers/generate-jwt.js";
 export const register = async (req, res) => {
     try {
         const data = req.body;
-        let profilePicture = req.file ? req.file.filename : null;
         const encryptedPassword = await hash(data.password)
         data.password = encryptedPassword
-        data.profilePicture = profilePicture
 
         const user = await User.create(data);
 
@@ -53,8 +51,7 @@ export const login = async (req, res) => {
         return res.status(200).json({
             message: "Login successful",
             userDetails: {
-                token: token,
-                profilePicture: user.profilePicture
+                token: token
             }
         })
     }catch(err){
@@ -64,3 +61,34 @@ export const login = async (req, res) => {
         })
     }
 }
+
+
+const AddUserAdmin = async () => {
+    try {
+        const adminExists = await User.findOne({ role: "ADMIN_ROLE" });
+
+        if (adminExists) {
+            console.log("El usuario de administrador ya existe, no se puede crear otro");
+            return;
+        }
+
+        const hashedPassword = await hash("123Cgomez@");
+
+        const userAdmin = new User({
+            name: "Cristian",
+            surname: "Gomez",
+            username: "cgomez01",
+            email: "cgomez123@gmail.com",
+            password: hashedPassword,
+            phone: 12345678,
+            role: "ADMIN_ROLE"
+        });
+
+        await userAdmin.save();
+        console.log("Administrador creado exitosamente");
+    } catch (error) {
+        console.error("Error al verificar o crear el Administrador:", error.message);
+    }
+};
+
+export default AddUserAdmin;

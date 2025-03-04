@@ -11,10 +11,10 @@ const userSchema = Schema({
         required: [true, "Surname is required"],
         maxLength: [25, "Surname cannot exceed 25 characters"]
     },
-    username:{
+    username: {
         type: String,
-        required: true,
-        unique:true
+        required: [true, "Username is required"],
+        unique: true
     },
     email:{
         type: String,
@@ -25,19 +25,16 @@ const userSchema = Schema({
         type: String,
         required: [true, "Password is required"]
     },
-    profilePicture:{
-        type: String
-    },
     phone:{
         type: String,
         minLength: 8,
         maxLength: 8,
-        required: true
+        required: [true, "Phone is required"]
     },
-    role:{
+    role: {
         type: String,
-        required: true,
-        enum: ["ADMIN_ROLE", "USER_ROLE"]
+        enum: ["ADMIN_ROLE", "CLIENT_ROLE"],
+        default: "CLIENT_ROLE",
     },
     status:{
         type: Boolean,

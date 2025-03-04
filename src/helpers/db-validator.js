@@ -1,5 +1,4 @@
 import User from "../user/user.model.js"
-import Pet from "../pet/pet.model.js"
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -22,11 +21,10 @@ export const userExists = async (uid = " ") => {
     }
 }
 
-export const petExists = async (id = "") => {
-    const existe = await Pet.findById(id);
-    if (!existe) {
-        throw new Error("No existe la mascota con el ID proporcionado");
+export const roleBlock = (value) => {
+    if (value) {
+        throw new Error("No puedes ingresar el role ya que se asigna por default");
+        
     }
-};
-
+}
 

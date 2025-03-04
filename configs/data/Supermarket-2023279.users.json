@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "67c69effd8f8f26e896bcf29"
+  },
+  "name": "Cristian",
+  "surname": "Gomez",
+  "username": "cgomez01",
+  "email": "cgomez123@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$bybhsLquKHJbf5eWALhN+w$ItW6D7Emta4aM2DsUiLFF8nTWjwAsQ8d2g/sCiiGt4k",
+  "phone": "12345678",
+  "role": "ADMIN_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c69f06d8f8f26e896bcf2d"
+  },
+  "name": "Juan",
+  "surname": "Pérez",
+  "username": "juanperez",
+  "email": "juan.perez@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$+JnGAszfwnX/JKnyoqxz0w$6k6IxR2b7WA6s8Mlp/xEIqoQ4qSFlRmQYTGPb7r1CqM",
+  "phone": "87654320",
+  "role": "CLIENT_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c6ad626cc6d6cb2b3206ee"
+  },
+  "name": "Carlos",
+  "surname": "González",
+  "username": "carlitos_admin",
+  "email": "carlos.gonzalez@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$jvVh5dDvk9oA2cnWjx5zfg$HdWPCk+GZQ7HOyev/iP1SemkiKUiEYx+oN6BKPEkf8o",
+  "phone": "87654321",
+  "role": "CLIENT_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c6ad706cc6d6cb2b3206f2"
+  },
+  "name": "María",
+  "surname": "López",
+  "username": "mlopez",
+  "email": "maria.lopez@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$XOz816J1XH29165IkhC0cw$vhnMJ9HXNtWRtvAQjqX49PS/s2AGFZtDqBQqZItrMdw",
+  "phone": "12345678",
+  "role": "CLIENT_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c6ad7a6cc6d6cb2b3206f6"
+  },
+  "name": "Pedro",
+  "surname": "Ramírez",
+  "username": "pedritoR",
+  "email": "pedro.ramirez@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$kX/eMMvpDvBbi1CsxHpM5g$V6X0ilczTvIsDn8iqsgwL54vbz2/b6AZQ3IKi1tKWkI",
+  "phone": "23456789",
+  "role": "CLIENT_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c6ad846cc6d6cb2b3206fa"
+  },
+  "name": "Lucía",
+  "surname": "Martínez",
+  "username": "lucia_admin",
+  "email": "lucia.martinez@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$rdVFZPCpwRTwZ/yuXCMDXA$IXcn7WvlwLPgKO+g2IAw35UXwuFrxfDFsOtMFKYhE3Y",
+  "phone": "34567890",
+  "role": "CLIENT_ROLE",
+  "status": true
+}]
