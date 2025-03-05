@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "67c8d4df0045485f5029b6a7"
+  },
+  "user": {
+    "$oid": "67c69f06d8f8f26e896bcf2d"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "67c7bd9d49833f79374807b7"
+      },
+      "quantity": 1,
+      "_id": {
+        "$oid": "67c8d4df0045485f5029b6a8"
+      }
+    }
+  ],
+  "status": "active"
+}]

@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "cb45f59f-9d72-4277-aded-524897a0eb32",
+		"_postman_id": "930099d5-44e5-40f0-b1f8-d3aafa2bf38f",
 		"name": "Supermarket",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "41971060"
+		"_exporter_id": "37643426"
 	},
 	"item": [
 		{
@@ -399,6 +399,74 @@
 							}
 						},
 						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/updateProduct/67c827cd768cbb11e68eb475"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Agregar carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWYwNmQ4ZjhmMjZlODk2YmNmMmQiLCJpYXQiOjE3NDEyMTQ5MzMsImV4cCI6MTc0MTIxODUzM30.FmUPDW7sk1znM-UfHSjr5ZpLzO9KiR6Qepy4KaJdY7g"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"67c7bd9d49833f79374807b7\", \r\n  \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/cart/addCart"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWYwNmQ4ZjhmMjZlODk2YmNmMmQiLCJpYXQiOjE3NDEyMTQ5MzMsImV4cCI6MTc0MTIxODUzM30.FmUPDW7sk1znM-UfHSjr5ZpLzO9KiR6Qepy4KaJdY7g"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/cart/getCart"
+					},
+					"response": []
+				},
+				{
+					"name": "Quitar cantidad productos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWYwNmQ4ZjhmMjZlODk2YmNmMmQiLCJpYXQiOjE3NDEyMTQ5MzMsImV4cCI6MTc0MTIxODUzM30.FmUPDW7sk1znM-UfHSjr5ZpLzO9KiR6Qepy4KaJdY7g"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"67c7bd9d49833f79374807b7\", \r\n  \"quantity\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/cart/removeFromCart"
 					},
 					"response": []
 				}
