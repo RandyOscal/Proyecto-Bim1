@@ -6,16 +6,16 @@ const router = Router();
 
 router.post("/addProduct", addProductValidator, addProduct);
 
-router.get("/getProduct/:productName", getProductByNameValidator, getProductByName);
+router.get("/getProduct", getProductByNameValidator, getProductByName);//no funciona
 
 router.get("/getProductsOutOfStock", getProductOutOfStockValidator, getProductsOutOfStock);
 
-router.get("/getProducts", listProducts);
+router.get("/getProducts", getProducts);
 
-router.get("/filterProducts", getProducts);
+router.get("/filterProducts", listProducts);
 
-router.put("/updateProduct/:pid", updateProductValidator, updateProduct);
+router.put("/updateProduct/:id", updateProductValidator, updateProduct);
 
-router.delete("/deleteProduct/:pid", deleteProductValidator, deleteProduct);
+router.delete("/deleteProduct/:id", deleteProductValidator, deleteProduct);
 
 export default router;

@@ -45,10 +45,10 @@ export const getCategory = async (req, res) => {
 
 export const updateCategory = async (req, res) => {
     try {
-        const { cid } = req.params;
+        const { id } = req.params;
         const  data  = req.body;
 
-        const categ = await Category.findByIdAndUpdate(cid, data, { new: true });
+        const categ = await Category.findByIdAndUpdate(id, data, { new: true });
 
         res.status(200).json({
             success: true,
@@ -66,7 +66,7 @@ export const updateCategory = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
     try{
-        const {cid}  = req.params;
+        const {id}  = req.params;
         const { confirmDelete } = req.body;
 
         if (!confirmDelete) {
@@ -76,7 +76,7 @@ export const deleteCategory = async (req, res) => {
             });
         }
         
-        const categ = await Category.findByIdAndUpdate(cid, {status: false}, {new: true})
+        const categ = await Category.findByIdAndUpdate(id, {status: false}, {new: true})
 
         return res.status(200).json({
             success: true,

@@ -1,9 +1,11 @@
 import { body, param } from "express-validator";
-import { productExists, productNameExists, productIDExists} from "../helpers/db-validator.js";
+import { productExists, productIDExists} from "../helpers/db-validator.js";
 import { validarCampos } from "./validate-files.js";
 import { handleErrors } from "./handle-errors.js";
 import { validateJWT } from "./validate-jwt.js";
 import { hasRoles } from "./validate-roles.js";
+import  Producto  from "../product/product.model.js";
+import { query } from "express-validator";
 
 export const addProductValidator = [
     validateJWT,
@@ -15,8 +17,7 @@ export const addProductValidator = [
 ]
 
 export const getProductByNameValidator = [
-    param("productName").notEmpty().withMessage("El nombre del producto es requerido").custom(productNameExists),
-    validarCampos,
+    validateJWT,
     handleErrors
 ]
 
@@ -30,8 +31,8 @@ export const getProductOutOfStockValidator = [
 export const updateProductValidator = [
     validateJWT,
     hasRoles("ADMIN_ROLE"),
-    param("pid", "No es un ID válido").isMongoId(),
-    param("pid").custom(productIDExists),
+    param("id", "No es un ID válido").isMongoId(),
+    param("id").custom(productIDExists),
     validarCampos,
     handleErrors
 ]
@@ -39,8 +40,8 @@ export const updateProductValidator = [
 export const deleteProductValidator = [
     validateJWT,
     hasRoles("ADMIN_ROLE"),
-    param("pid").isMongoId().withMessage("No es un ID válido de MongoDB"),
-    param("pid").custom(productIDExists),
+    param("id").isMongoId().withMessage("No es un ID válido de MongoDB"),
+    param("id").custom(productIDExists),
     validarCampos,
     handleErrors
 ]
