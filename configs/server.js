@@ -9,7 +9,9 @@ import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
 import categoryRoutes from "../src/category/category.routes.js"
+import productRoutes from "../src/product/product.routes.js"
 import AddUserAdmin from "../src/auth/auth.controller.js"
+import AddCategory from "../src/category/category.controller.js"
 import { swaggerDocs, swaggerUi } from "./swagger.js"
 
 
@@ -40,6 +42,7 @@ const middlewares = (app) => {
         app.use("/gestionSupermarket/v1/auth", authRoutes)
         app.use("/gestionSupermarket/v1/user", userRoutes)
         app.use("/gestionSupermarket/v1/category", categoryRoutes)
+        app.use("/gestionSupermarket/v1/product", productRoutes)
         app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
     }
 
@@ -59,6 +62,7 @@ export const initServer = () => {
         conectarDB()
         routes(app)
         AddUserAdmin()
+        AddCategory()
         app.listen(process.env.PORT)
         console.log(`Server running on port ${process.env.PORT}`)
     } catch (err) {
