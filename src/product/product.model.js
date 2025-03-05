@@ -9,9 +9,11 @@ const productSchema = Schema({
         type: String,
         required: [true, "Description is required"],
     },
-    category: {
-        type: String,
+    category:{
+        type: Schema.Types.ObjectId,
+        ref: "Category",
         required: [true, "Category is required"],
+        default: "SIN_CATEGORIA"
     },
     stock:{
         type: Number,

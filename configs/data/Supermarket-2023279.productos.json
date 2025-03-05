@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "67c7bd9d49833f79374807b7"
+  },
+  "productName": "Laptop-Gamer-Pro",
+  "description": "Laptop con procesador i9, 32GB RAM y SSD de 1TB",
+  "category": "Electrónica",
+  "stock": 5,
+  "price": "1899.99",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c801f5056ba5b9443d7b96"
+  },
+  "productName": "Laptop Gamer",
+  "description": "Laptop con procesador i7, 16GB RAM y SSD de 512GB",
+  "category": "Electrónica",
+  "stock": 10,
+  "price": "1200.99",
+  "status": true
+}]

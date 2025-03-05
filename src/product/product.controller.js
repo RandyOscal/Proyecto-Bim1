@@ -1,15 +1,28 @@
+import mongoose from "mongoose";
 import Producto from "./product.model.js";
+import Category from "../category/category.model.js";
 
 export const addProduct = async (req, res) => {
     try {
-        const data = req.body;
+        let { productName, description, category, stock, price } = req.body;
 
-        const product = await Producto.create(data);
+        if (!productName || !description || stock == null || !price) {
+            return res.status(400).json({ message: "Todos los campos son obligatorios" });
+        }
+
+        if (!category || !mongoose.Types.ObjectId.isValid(category)) {
+            const defaultCategory = await Category.findOne({ categoryName: "SIN-CATEGORIA" }).lean();
+            if (!defaultCategory) {
+                return res.status(500).json({ message: "No se encontró la categoría predeterminada 'SIN-CATEGORIA'" });
+            }
+            category = defaultCategory._id;
+        }
+
+        const product = await Producto.create({ productName, description, category, stock, price });
 
         return res.status(201).json({
             message: "Producto ha sido creado",
-            productName: product.productName,
-            category: product.category
+            product
         });
     } catch (err) {
         return res.status(500).json({
@@ -19,30 +32,41 @@ export const addProduct = async (req, res) => {
     }
 };
 
+
+
 export const getProductByName = async (req, res) => {
     try {
-        const { productName } = req.params;
-        const product = await Producto.findOne({name: productName});
+        const { productName } = req.query;
 
-        if (!product) {
+        if(!productName){
+            return res.status(400).json({
+                success: false,
+                message: "El nombre del producto no exite"
+            })
+        }
+
+        const products = await Producto.find({ productName: {$regex: productName, $options: "i"}, })
+
+        if (products.length === 0) {
             return res.status(404).json({
                 success: false,
-                message: "Producto no encontrado"
+                message: "No se encontraron productos"
             });
         }
 
         return res.status(200).json({
             success: true,
-            product
+            products
         });
     } catch (err) {
         return res.status(500).json({
             success: false,
-            message: "Error al obtener el producto",
+            message: "Error al obtener los productos",
             error: err.message
         });
     }
 };
+
 
 export const getProductsOutOfStock  = async (req, res) => {
     try {
@@ -93,7 +117,7 @@ export const getProducts = async (req, res) => {
 
 export const listProducts = async (req, res) => {
     try {
-        const { filter, order } = req.body;
+        const { filter, order, value} = req.body;
 
         if (!filter || !order) {
             return res.status(400).json({
@@ -148,10 +172,10 @@ export const listProducts = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
     try {
-        const { pid } = req.params;
+        const { id } = req.params;
         const data = req.body;
 
-        const product = await Producto.findByIdAndUpdate(pid, data, { new: true });
+        const product = await Producto.findByIdAndUpdate(id, data, { new: true });
 
         res.status(200).json({
             success: true,
@@ -169,7 +193,7 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
     try {
-        const { pid } = req.params;
+        const { id } = req.params;
         const { confirmDelete } = req.body;
 
         if (!confirmDelete) {
@@ -179,7 +203,7 @@ export const deleteProduct = async (req, res) => {
             });
         }
 
-        const product = await Producto.findByIdAndUpdate(pid, { status: false }, { new: true });
+        const product = await Producto.findByIdAndUpdate(id, { status: false }, { new: true });
 
         return res.status(200).json({
             success: true,

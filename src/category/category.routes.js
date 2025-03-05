@@ -55,8 +55,7 @@ router.get("/getCategorys", getCategoryValidator, getCategory)
  *       200:
  *         description: Category deleted successfully
  */
-router.delete("/deleteCategory/:cid", deleteCategoryValidator, deleteCategory)
-
+router.delete("/deleteCategory/:id", deleteCategoryValidator, deleteCategory)
 /**
  * @swagger
  * /updateCategory/{cid}:
@@ -84,6 +83,6 @@ router.delete("/deleteCategory/:cid", deleteCategoryValidator, deleteCategory)
  *       200:
  *         description: Category updated successfully
  */
-router.put("/updateCategory/:cid", updateCategoriValidator, updateCategory)
+router.put("/updateCategory/:id", updateCategoriValidator, updateCategory)
 
 export default router

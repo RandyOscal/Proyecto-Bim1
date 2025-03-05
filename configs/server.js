@@ -4,6 +4,7 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
+import multer from "multer";
 import { dbConnection } from "./mongo.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import authRoutes from "../src/auth/auth.routes.js"
@@ -14,10 +15,12 @@ import AddUserAdmin from "../src/auth/auth.controller.js"
 import AddCategory from "../src/category/category.controller.js"
 import { swaggerDocs, swaggerUi } from "./swagger.js"
 
+const upload = multer()
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
+    app.use(upload.none())
     app.use(cors({
         origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],

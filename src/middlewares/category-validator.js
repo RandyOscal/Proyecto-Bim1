@@ -22,8 +22,8 @@ export const getCategoryValidator = [
 export const deleteCategoryValidator = [
     validateJWT,
     hasRoles("ADMIN_ROLE"),
-    param("cid").isMongoId().withMessage("No es un ID válido de MongoDB"),
-    param("cid").custom(categoryIDExists),
+    param("id").isMongoId().withMessage("No es un ID válido de MongoDB"),
+    param("id").custom(categoryIDExists),
     validarCampos,
     handleErrors
 ]
@@ -31,8 +31,8 @@ export const deleteCategoryValidator = [
 export const updateCategoriValidator = [
     validateJWT,
     hasRoles("ADMIN_ROLE"),
-    param("cid", "No es un ID válido").isMongoId(),
-    param("cid").custom(categoryIDExists),
+    param("id", "No es un ID válido").isMongoId(),
+    param("id").custom(categoryIDExists),
     validarCampos,
     handleErrors
 ]

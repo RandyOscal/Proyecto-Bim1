@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "fde00274-b3ea-45a3-be36-f5bd789c6361",
+		"_postman_id": "cb45f59f-9d72-4277-aded-524897a0eb32",
 		"name": "Supermarket",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "37643426"
+		"_exporter_id": "41971060"
 	},
 	"item": [
 		{
@@ -34,7 +34,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"juan.perez@example.com\",\r\n    \"password\": \"jPerez12@\"\r\n}",
+							"raw": "{\r\n    \"email\": \"cgomez123@gmail.com\",\r\n    \"password\": \"123Cgomez@\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -248,6 +248,157 @@
 							}
 						},
 						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/category/updateCategory/67c785e2124caf6a2a6beee1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Agregar Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExNjg5MTksImV4cCI6MTc0MTE3MjUxOX0.7YF6-GtkbAwsuku3JtqlJBi65wgMeWzNzav9Qq6j0Zw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"PCgamer3\",\r\n    \"description\": \"Laptop con procesador Intel i9 y tarjeta gráfica RTX 4090\",\r\n    \"category\": \"\",\r\n    \"stock\": 10,\r\n    \"price\": \"1200.99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/addProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/getProducts"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/getProduct/Laptop-Gamer-Pro"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar agotados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExNjU1MjksImV4cCI6MTc0MTE2OTEyOX0.gqDaR4IPPit7ls4GFwznVzAacS7JsxRrjp4lz2lg5iU"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/getProductsOutOfStock"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/getProducts"
+					},
+					"response": []
+				},
+				{
+					"name": "Filtros Productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "filter",
+									"value": "category",
+									"type": "text"
+								},
+								{
+									"key": "order",
+									"value": "asc",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "67c782e0e00173930f61a642",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/filterProducts"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExNjg5MTksImV4cCI6MTc0MTE3MjUxOX0.7YF6-GtkbAwsuku3JtqlJBi65wgMeWzNzav9Qq6j0Zw"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"confirmDelete\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/deleteProduct/67c826fb08df7c3d8eba3827"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2OWVmZmQ4ZjhmMjZlODk2YmNmMjkiLCJpYXQiOjE3NDExODg4MjcsImV4cCI6MTc0MTE5MjQyN30.uXglaL3RIMIgI6Faqb-iSPGYCoSUWcWe8yjojeLX5ak"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"PCgamer3\",\r\n    \"description\": \"Laptop con procesador i7, 16GB RAM y SSD de 1TB\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionSupermarket/v1/product/updateProduct/67c827cd768cbb11e68eb475"
 					},
 					"response": []
 				}
