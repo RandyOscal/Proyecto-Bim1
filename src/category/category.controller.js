@@ -91,3 +91,26 @@ export const deleteCategory = async (req, res) => {
         })
     }
 }
+
+const AddCategory = async () => {
+    try {
+        const categoryExists = await Category.findOne({ categoryName: "SIN-CATEGORIA" });
+
+        if (categoryExists) {
+            console.log("La categoría predeterminada ya existe, no se puede crear otra.");
+            return;
+        }
+        const defaultCategory = new Category({
+            categoryName: "SIN-CATEGORIA",
+            description: "Categoría predeterminada para productos sin categoría",
+            status: true
+        });
+
+        await defaultCategory.save();
+        console.log("Categoría predeterminada creada exitosamente.");
+    } catch (error) {
+        console.error("Error al verificar o crear la categoría predeterminada:", error.message);
+    }
+};
+
+export default AddCategory;

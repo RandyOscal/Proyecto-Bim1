@@ -38,8 +38,8 @@ export const categoryExists = async (categoryName = "") => {
     }
 }
 
-export const categoryIDExists = async (_id = " ") => {
-    const existe = await Category.findById(_id)
+export const categoryIDExists = async (cid = " ") => {
+    const existe = await Category.findById(cid)
     if(!existe){
         throw new Error("No existe la categoria con el ID proporcionado")
     }

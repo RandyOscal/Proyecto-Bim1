@@ -10,6 +10,7 @@ import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
 import categoryRoutes from "../src/category/category.routes.js"
 import AddUserAdmin from "../src/auth/auth.controller.js"
+import AddCategory from "../src/category/category.controller.js"
 import { swaggerDocs, swaggerUi } from "./swagger.js"
 
 
@@ -59,6 +60,7 @@ export const initServer = () => {
         conectarDB()
         routes(app)
         AddUserAdmin()
+        AddCategory()
         app.listen(process.env.PORT)
         console.log(`Server running on port ${process.env.PORT}`)
     } catch (err) {
